@@ -1,0 +1,6 @@
+input[type=submit]{
+    background-color:darksalmon;
+}
+input[type=text]{
+	margin-right: auto;
+}

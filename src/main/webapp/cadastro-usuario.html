@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>HOME - CADASTRO</title>
+        <link rel="stylesheet" href="css/style.css"/>
+    </head>
+    
+    <body>
+        
+        <h3>Página de Cadastro</h3>
+        <hr>
+        <form id="formCadastro">
+            <label for="Nome">Nome:</label>
+            <input id="inpNome" type="text" placeholder="Ex: Paula Silva"/><br/>
+            <label for="Nome">Email:</label>
+            <input id="inpEmail" type="text" placeholder="Ex: paula@xmail.com"/><br/>
+            <label for="Nome">Endereço:</label>
+            <input id="inpEndereco" type="text" placeholder="Ex: Rua das Flores, 80"/><br/>
+            <label for="Nome">Sexo:</label>
+            <input id="inpSexo" type="text" placeholder="Ex: Feminino"/><br/>
+            <label for="Nome">Senha:</label>
+            <input id="inpSenha" type="password" placeholder="********"/><br/>
+            
+            <input type="submit" id="buttonSalvar" value="Salvar" onclick="uc.aoClicarSalvar()"/>
+            <input type="button" id="buttonCancelar" value="Cancelar" onclick="uc.aoClicarCancelar()"/>
+        </form>
+    </body>
+    <script src="js/usuario-controller.js"></script>
+    <script>uc = new usuarioController(); </script>
+</html>
