@@ -22,10 +22,31 @@
             <label for="Nome">Senha:</label>
             <input id="inpSenha" type="password" placeholder="********"/><br/>
             
-            <input type="submit" id="buttonSalvar" value="Salvar" onclick="uc.aoClicarSalvar()"/>
+            <input type="button" id="buttonSalvar" value="Salvar" onclick="uc.aoClicarSalvar()"/>
             <input type="button" id="buttonCancelar" value="Cancelar" onclick="uc.aoClicarCancelar()"/>
+        	<input type="button" id="buttonListar" value="Listar" onclick="uc.aoClicarListar()">
         </form>
+
+
+        <hr>
+        <table id="tbUsuarios" border="1">
+            <thead>
+
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Endereco</th>
+                    <th>Sexo</th>
+                    <th>Senha</th>
+                </tr>
+
+            </thead>
+            <tbody id="tbUsuariosBody">
+
+            </tbody>
+        </table>
     </body>
+    <script src="js/usuario-service.js"></script>
     <script src="js/usuario-controller.js"></script>
     <script>uc = new usuarioController(); </script>
 </html>
