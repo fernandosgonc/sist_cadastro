@@ -67,7 +67,7 @@ usuarioController = function () {
             dados += "<td>"+usuarios[i].sexo+"</td>";
             dados += "<td>"+usuarios[i].senha+"</td>";
             dados+= "<td><input type='button' value='Editar' onclick='uc.aoClicarEditar("+i+")'></td>";
-            dados+= "<td><input type='button' value='Excluir' onclick='uc.aoClicarExcluir()'></td>";
+            dados+= "<td><input type='button' value='Excluir' onclick='uc.aoClicarExcluir("+i+")'></td>";
             dados += "</tr>";
         }
 
