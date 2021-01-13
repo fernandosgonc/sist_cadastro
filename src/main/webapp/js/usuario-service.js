@@ -13,4 +13,13 @@ usuarioService = function() {
 		return this.teste[id];
 	}
 
+	this.alterar = function(id, usuario){
+		this.teste.splice(id, 1, usuario);
+	}
+
+	this.excluir = function(id){
+		this.teste.splice(id, 1);
+	}
+
+
 }
