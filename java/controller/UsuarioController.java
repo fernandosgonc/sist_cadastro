@@ -1,6 +1,9 @@
 package controller;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,11 +12,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Usuario;
+import repository.UsuarioRespositoryJDBC;
+import util.core.Java2Json;
+import util.entity.UsuarioInfos;
+
 
 
 @WebServlet(urlPatterns={"/cadServlet", "/sistCadastro"})
 public class UsuarioController extends HttpServlet {
 
+	UsuarioRespositoryJDBC usuRepo = new UsuarioRespositoryJDBC();
+	UsuarioInfos usuInfo = null;
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String nome = req.getParameter("nome");
@@ -31,7 +41,82 @@ public class UsuarioController extends HttpServlet {
 		
 		
 		//ADICIONAR NO REPOSITORY
+		try {
+			usuRepo.adicionar(usuario);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		
+	}
+	
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		List<Usuario> lista = new ArrayList<Usuario>();
+		
+		
+		try {
+			
+			lista = usuRepo.buscarTodos();
+			
+			usuInfo = new UsuarioInfos(lista);
+			String json = Java2Json.ListToJson(usuInfo);
+			
+			//for(int i = 0; i<lista.size(); i++){
+				
+				//resp.getWriter().print((lista.get(i).getNome()+"\n"));
+				
+			resp.getWriter().print(json);
+			//}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
+	
+	@Override
+	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		Integer id = Integer.parseInt(req.getParameter("id"));
+		String nome = req.getParameter("nome");
+		String email = req.getParameter("email");
+		String endereco = req.getParameter("endereco");
+		String sexo = req.getParameter("sexo");
+		String senha = req.getParameter("senha");
+		
+		Usuario usuario = new Usuario();
+		usuario.setId(id);
+		usuario.setNome(nome);
+		usuario.setEmail(email);
+		usuario.setEndereco(endereco);
+		usuario.setSexo(sexo);
+		usuario.setSenha(senha);
+		
+		try {
+			usuRepo.editar(usuario);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		try{
+			Integer id = Integer.parseInt((req.getParameter("id")));
+			
+			Usuario usuario = new Usuario();
+			usuario.setId(id);
+			
+			usuRepo.excluir(id);
+		}catch(NumberFormatException e){
+			e.printStackTrace();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
