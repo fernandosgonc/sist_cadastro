@@ -2,11 +2,6 @@ package model;
 
 public class Usuario {
 	
-	@Override
-	public String toString() {
-		return "Usuario [id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + ", sexo=" + sexo
-				+ ", endereco=" + endereco + "]";
-	}
 	private Integer id;
 	private String nome;
 	private String email;
@@ -15,6 +10,11 @@ public class Usuario {
 	private String endereco;
 	
 	
+	@Override
+	public String toString() {
+		return "Usuario [id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + ", sexo=" + sexo
+				+ ", endereco=" + endereco + "]";
+	}
 	
 	public Integer getId() {
 		return id;

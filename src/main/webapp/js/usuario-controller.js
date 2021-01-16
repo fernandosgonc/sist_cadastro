@@ -13,7 +13,11 @@ usuarioController = function () {
         if (this.autenticador.valida()) {
 
             if (!this.modoEdicao) {
-                this.us.adicionar(usuario);
+                this.us.adicionar(usuario, function(){
+                    window.alert("Salvo com sucesso!");
+                }, function(){
+                    window.alert("Erro ao salvar.");
+                });
             } else {
                 this.us.alterar(this.indice, usuario);
             }
@@ -30,7 +34,12 @@ usuarioController = function () {
 
     this.aoClicarListar = function () {
 
-        this.renderizarTabela();
+        
+        var self = this;
+        usuarios = this.us.buscarTodos(function(usuarios){
+            self.renderizarTabela(usuarios.lista);
+
+        });
     }
 
 
@@ -91,8 +100,8 @@ usuarioController = function () {
         document.getElementById("inpSenha").value = "";
     }
 
-    this.renderizarTabela = function () {
-        usuarios = this.us.buscarTodos();
+    this.renderizarTabela = function (usuarios) {
+        
 
         dados = "";
         for (i = 0; i < usuarios.length; i++) {

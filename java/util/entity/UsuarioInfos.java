@@ -30,10 +30,13 @@ public class UsuarioInfos {
 		List<Usuario> lista = new ArrayList<Usuario>();
 		Usuario usuario = new Usuario();
 		usuario.setNome("jose");
+		Usuario usuario2 = new Usuario();
+		usuario2.setNome("fernando");
 		lista.add(usuario);
+		lista.add(usuario2);
 		UsuarioInfos ui = new UsuarioInfos(lista);
 		String convert = Java2Json.ListToJson(ui);
-		System.out.println(ui.toString());
+		System.out.println(convert);
 	}*/
 	
 }
