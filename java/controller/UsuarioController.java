@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import model.Usuario;
 import repository.UsuarioRespositoryJDBC;
 import util.core.Java2Json;
+import util.entity.ListaInfos;
 import util.entity.UsuarioInfos;
+
 
 
 
@@ -22,6 +24,7 @@ import util.entity.UsuarioInfos;
 public class UsuarioController extends HttpServlet {
 
 	UsuarioRespositoryJDBC usuRepo = new UsuarioRespositoryJDBC();
+	ListaInfos listaInfo = null;
 	UsuarioInfos usuInfo = null;
 	
 	@Override
@@ -53,15 +56,31 @@ public class UsuarioController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		
+		if(req.getParameter("id")!=null) {
+			
+			Usuario usuario = null;
+			try {
+				Integer id = Integer.parseInt(req.getParameter("id"));
+				usuario = usuRepo.buscarPorId(id);
+				
+				String json = Java2Json.UsuarioToJson(usuario);
+				
+				resp.getWriter().print(json);
+			}catch (NumberFormatException e) {
+				e.printStackTrace();
+			}
+			
+		}else {
+		
+		
 		List<Usuario> lista = new ArrayList<Usuario>();
-		
-		
 		try {
 			
 			lista = usuRepo.buscarTodos();
 			
-			usuInfo = new UsuarioInfos(lista);
-			String json = Java2Json.ListToJson(usuInfo);
+			listaInfo = new ListaInfos(lista);
+			String json = Java2Json.ListToJson(listaInfo);
 			
 			//for(int i = 0; i<lista.size(); i++){
 				
@@ -73,6 +92,7 @@ public class UsuarioController extends HttpServlet {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+	}
 	}
 	
 	

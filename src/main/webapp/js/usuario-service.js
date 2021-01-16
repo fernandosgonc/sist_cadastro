@@ -38,16 +38,58 @@ usuarioService = function() {
 		xhttp.send();
 	}
 
-	this.buscarPorId = function(id) {
+	this.buscarPorId = function(id, cb) {
+
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function(){
+			if(this.readyState == 4){
+				if(this.status == 200){
+					usuario = JSON.parse(this.responseText);
+					cb(usuario);
+				}
+			}
+		}
+
+		xhttp.open("GET", "sistCadastro?id="+id, true);
+		xhttp.send();
+
 		return this.teste[id];
 	}
 
-	this.alterar = function(id, usuario){
+	this.alterar = function(id, usuario, sucesso, erro){
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function(){
+			if(this.readyState == 4){
+				if(this.status == 200){
+					sucesso();
+				}else{
+					erro();
+				}
+			}
+		}
+
+		xhttp.open("PUT", "sistCadastro?nome="+usuario.nome+"&email="+usuario.email+"&endereco="+usuario.endereco+"&sexo="+usuario.sexo+"&senha="+usuario.senha+"&id="+usuario.id, true);
+		xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xhttp.send();
 		this.teste.splice(id, 1, usuario);
 	}
 
-	this.excluir = function(id){
-		this.teste.splice(id, 1);
+	this.excluir = function(id, sucesso, erro){
+
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function(){
+			if(this.readyState == 4){
+				if(this.status == 200){
+					sucesso();
+				}else{
+					erro();
+				}
+			}
+		}
+
+		xhttp.open("DELETE", "sistCadastro?id="+id, true);
+		xhttp.send();
+		//this.teste.splice(id, 1);
 	}
 
 
