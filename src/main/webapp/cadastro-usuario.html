@@ -11,21 +11,21 @@
         <h3>Página de Cadastro</h3>
         <hr>
         <form id="formCadastro">
-            <label for="Nome">Nome:</label>
+            <label for="Nome">Nome:</label><br/>
             <input id="inpNome" type="text" placeholder="Ex: Paula Silva" required/><br/>
-            <label for="Nome">Email:</label>
+            <label for="Email">Email:</label><br/>
             <input id="inpEmail" type="text" placeholder="Ex: paula@xmail.com" required/><br/>
-            <label for="Nome">Endereço:</label>
+            <label for="Endereco">Endereço:</label><br/>
             <input id="inpEndereco" type="text" placeholder="Ex: Rua das Flores, 80"/><br/>
-            <label for="Nome">Sexo:</label>
+            <label for="Sexo">Sexo:</label><br/>
             <!--<input id="inpSexo" type="text" placeholder="Ex: Feminino"/><br/>-->
             <select name="sexo" id="inpSexo">
                 <option value="M">Masculino</option>
                 <option value="F">Feminino</option>
                 <option value="NB">Nao Binario</option>
                 <option value="Other">Outro</option>
-            </select></br>
-            <label for="Nome">Senha:</label>
+            </select>
+            <label for="Senha">Senha:</label>
             <input id="inpSenha" type="password" placeholder="********"/ required><br/>
             
             <input type="button" id="buttonSalvar" value="Salvar" onclick="uc.aoClicarSalvar()"/>
@@ -34,7 +34,7 @@
         </form>
 
 
-        <hr>
+       
         <table id="tbUsuarios">
             <thead id="tbUsuariosHead">
 
