@@ -22,9 +22,9 @@ usuarioController = function () {
             } else {
 
                 this.us.alterar(usuario.id, usuario, function(){
-                    window.alert("Sucesso");
+                    window.alert("Editado com sucesso!");
                 }, function(){
-                    window.alert("Erro");
+                    window.alert("Erro ao editar.");
                 });
             }
 
@@ -45,6 +45,8 @@ usuarioController = function () {
         usuarios = this.us.buscarTodos(function(usuarios){
             self.renderizarTabela(usuarios.lista);
 
+        }, function(params) {
+            window.alert("Erro ao listar.")
         });
     }
 
@@ -59,6 +61,8 @@ usuarioController = function () {
             document.getElementById("inpEndereco").value = usuario.endereco;
             document.getElementById("inpSexo").value = usuario.sexo;
             document.getElementById("inpSenha").value = usuario.senha;
+        }, function(){
+            window.alert("Erro ao editar");
         });
 
 

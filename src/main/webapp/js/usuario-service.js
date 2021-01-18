@@ -23,22 +23,26 @@ usuarioService = function() {
 	}
 
 
-	this.buscarTodos = function(cb) {
+	this.buscarTodos = function(cb, erro) {
 		//return this.teste;
 
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function(){
-			if(this.status == 200 && this.readyState==4){
+			if(this.readyState==4){
+			if(this.status == 200){
 				usuarios = JSON.parse(xhttp.responseText);
 				 cb(usuarios);
+			}else{
+				erro();
 			}
 		}
+	}
 
 		xhttp.open("GET", "sistCadastro", true);
 		xhttp.send();
 	}
 
-	this.buscarPorId = function(id, cb) {
+	this.buscarPorId = function(id, cb, erro) {
 
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function(){
@@ -46,6 +50,8 @@ usuarioService = function() {
 				if(this.status == 200){
 					usuario = JSON.parse(this.responseText);
 					cb(usuario);
+				}else{
+					erro();
 				}
 			}
 		}
