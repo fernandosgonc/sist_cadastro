@@ -8,12 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Usuario;
+import util.exceptions.UsuarioRepositoryException;
 
 public class UsuarioRespositoryJDBC {
 
 	private Connection conexao = ConnectionFactory.getConnection();
 
-	public void adicionar(Usuario usuario) {
+	public void adicionar(Usuario usuario) throws UsuarioRepositoryException {
 
 		try {
 			String sql = new String("insert into usuario (nome, email, endereco, sexo, senha) values(? , ? , ? ,? ,?)");
@@ -28,13 +29,12 @@ public class UsuarioRespositoryJDBC {
 			stmt.close();
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new UsuarioRepositoryException(e);
 		}
 
 	}
 
-	public void excluir(Integer id) {
+	public void excluir(Integer id) throws UsuarioRepositoryException {
 
 		try {
 			String sql = new String("delete from usuario where id=?");
@@ -45,11 +45,11 @@ public class UsuarioRespositoryJDBC {
 			stmt.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new UsuarioRepositoryException(e);
 		}
 	}
 
-	public List<Usuario> buscarTodos() {
+	public List<Usuario> buscarTodos() throws UsuarioRepositoryException {
 
 		List<Usuario> lista = new ArrayList<Usuario>();
 
@@ -73,13 +73,13 @@ public class UsuarioRespositoryJDBC {
 			result.close();
 
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new UsuarioRepositoryException(e);
 		}
 
 		return lista;
 	}
 
-	public Usuario buscarPorId(Integer id) {
+	public Usuario buscarPorId(Integer id) throws UsuarioRepositoryException {
 
 		Usuario usuario = null;
 		try {
@@ -99,13 +99,13 @@ public class UsuarioRespositoryJDBC {
 			result.close();
 			stmt.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			throw new UsuarioRepositoryException(e);
 		}
 
 		return usuario;
 	}
 
-	public Usuario editar(Usuario usuario) {
+	public Usuario editar(Usuario usuario) throws UsuarioRepositoryException {
 
 		try {
 			String sql = new String("update usuario set nome=?, email=?, endereco=?, sexo=?, senha=? where id=?");
@@ -120,8 +120,8 @@ public class UsuarioRespositoryJDBC {
 			stmt.execute();
 
 			stmt.close();
-		} catch (Exception e) {
-			// TODO: handle exception
+		} catch (SQLException e) {
+			throw new UsuarioRepositoryException(e);
 		}
 
 		return usuario;

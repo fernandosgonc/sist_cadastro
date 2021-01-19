@@ -16,11 +16,12 @@ import repository.UsuarioRespositoryJDBC;
 import util.core.Java2Json;
 import util.entity.ListaInfos;
 import util.entity.UsuarioInfos;
+import util.exceptions.UsuarioRepositoryException;
 
 
 
+@WebServlet(urlPatterns = "/sistCadastro")
 
-@WebServlet(urlPatterns={"/cadServlet", "/sistCadastro"})
 public class UsuarioController extends HttpServlet {
 
 	UsuarioRespositoryJDBC usuRepo = new UsuarioRespositoryJDBC();
@@ -46,8 +47,8 @@ public class UsuarioController extends HttpServlet {
 		//ADICIONAR NO REPOSITORY
 		try {
 			usuRepo.adicionar(usuario);
-		} catch (Exception e) {
-			// TODO: handle exception
+		} catch (UsuarioRepositoryException e) {
+			throw new ServletException(e);
 		}
 		
 	}
@@ -69,6 +70,8 @@ public class UsuarioController extends HttpServlet {
 				resp.getWriter().print(json);
 			}catch (NumberFormatException e) {
 				e.printStackTrace();
+			} catch (UsuarioRepositoryException e) {
+				throw new ServletException(e);
 			}
 			
 		}else {
@@ -89,8 +92,8 @@ public class UsuarioController extends HttpServlet {
 			resp.getWriter().print(json);
 			//}
 			
-		} catch (Exception e) {
-			// TODO: handle exception
+		} catch (UsuarioRepositoryException e) {
+			throw new ServletException(e);
 		}
 	}
 	}
@@ -116,8 +119,8 @@ public class UsuarioController extends HttpServlet {
 		
 		try {
 			usuRepo.editar(usuario);
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (UsuarioRepositoryException e) {
+			throw new ServletException(e);
 		}
 		
 	}
@@ -134,8 +137,8 @@ public class UsuarioController extends HttpServlet {
 			usuRepo.excluir(id);
 		}catch(NumberFormatException e){
 			e.printStackTrace();
-		}catch (Exception e) {
-			e.printStackTrace();
+		}catch (UsuarioRepositoryException e) {
+			throw new ServletException(e);
 		}
 		
 	}

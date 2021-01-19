@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>HOME - CADASTRO</title>
-        <link rel="stylesheet" href="css/style.css"/>
-    </head>
-    
-    <body>
-        
+
+<head>
+    <meta charset="utf-8">
+    <title>HOME - CADASTRO</title>
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+
+    <div id="cadastroBox">
+
         <h3>Página de Cadastro</h3>
         <hr>
         <form id="formCadastro">
-            <label for="Nome">Nome:</label><br/>
-            <input id="inpNome" type="text" placeholder="Ex: Paula Silva" required/><br/>
-            <label for="Email">Email:</label><br/>
-            <input id="inpEmail" type="text" placeholder="Ex: paula@xmail.com" required/><br/>
-            <label for="Endereco">Endereço:</label><br/>
-            <input id="inpEndereco" type="text" placeholder="Ex: Rua das Flores, 80"/><br/>
-            <label for="Sexo">Sexo:</label><br/>
+            <label for="Nome">Nome:</label><br />
+            <input id="inpNome" type="text" placeholder="Ex: Paula Silva" required /><br />
+            <label for="Email">Email:</label><br />
+            <input id="inpEmail" type="text" placeholder="Ex: paula@xmail.com" required /><br />
+            <label for="Endereco">Endereço:</label><br />
+            <input id="inpEndereco" type="text" placeholder="Ex: Rua das Flores, 80" /><br />
+            <label for="Sexo">Sexo:</label><br />
             <!--<input id="inpSexo" type="text" placeholder="Ex: Feminino"/><br/>-->
             <select name="sexo" id="inpSexo">
                 <option value="M">Masculino</option>
@@ -26,28 +29,31 @@
                 <option value="Other">Outro</option>
             </select>
             <label for="Senha">Senha:</label>
-            <input id="inpSenha" type="password" placeholder="********"/ required><br/>
-            
-            <input type="button" id="buttonSalvar" value="Salvar" onclick="uc.aoClicarSalvar()"/>
-            <input type="button" id="buttonCancelar" value="Cancelar" onclick="uc.aoClicarCancelar()"/>
-        	<input type="button" id="buttonListar" value="Listar" onclick="uc.aoClicarListar()">
+            <input id="inpSenha" type="password" placeholder="********" / required><br />
+
+            <div id="actionBotoes">
+                <input type="button" id="buttonSalvar" value="Salvar" onclick="uc.aoClicarSalvar()" />
+                <input type="button" id="buttonCancelar" value="Cancelar" onclick="uc.aoClicarCancelar()" />
+                <input type="button" id="buttonListar" value="Listar" onclick="uc.aoClicarListar()">
+            </div>
         </form>
+    </div>
 
 
-       
-        <table id="tbUsuarios">
-            <thead id="tbUsuariosHead">
+    <table id="tbUsuarios">
+        <thead id="tbUsuariosHead">
 
-               
 
-            </thead>
-            <tbody id="tbUsuariosBody">
 
-            </tbody>
-        </table>
-    </body>
-    <script src="js/usuario-service.js"></script>
-    <script src="js/autenticacao.js"></script>
-    <script src="js/usuario-controller.js"></script>
-    <script>uc = new usuarioController(); </script>
+        </thead>
+        <tbody id="tbUsuariosBody">
+
+        </tbody>
+    </table>
+</body>
+<script src="js/usuario-service.js"></script>
+<script src="js/autenticacao.js"></script>
+<script src="js/usuario-controller.js"></script>
+<script>uc = new usuarioController(); </script>
+
 </html>
