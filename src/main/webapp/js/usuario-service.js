@@ -27,6 +27,7 @@ usuarioService = function() {
 		//return this.teste;
 
 		var xhttp = new XMLHttpRequest();
+<<<<<<< HEAD
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4) {
 				if (this.status == 200) {
@@ -37,6 +38,19 @@ usuarioService = function() {
 				}
 			}
 		}
+=======
+		xhttp.onreadystatechange = function(){
+			if(this.readyState==4){
+			if(this.status == 200){
+				usuarios = JSON.parse(xhttp.responseText);
+				 cb(usuarios);
+			}else{
+				erro();
+			}
+		}
+	}
+
+>>>>>>> d2084d9393f992bbc2fdb886c08b1e9aafddc20f
 		xhttp.open("GET", "sistCadastro", true);
 		xhttp.send();
 	}
@@ -49,7 +63,11 @@ usuarioService = function() {
 				if (this.status == 200) {
 					usuario = JSON.parse(this.responseText);
 					cb(usuario);
+<<<<<<< HEAD
 				} else {
+=======
+				}else{
+>>>>>>> d2084d9393f992bbc2fdb886c08b1e9aafddc20f
 					erro();
 				}
 			}

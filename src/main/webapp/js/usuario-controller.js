@@ -45,7 +45,11 @@ usuarioController = function () {
         usuarios = this.us.buscarTodos(function(usuarios){
             self.renderizarTabela(usuarios.lista);
 
+<<<<<<< HEAD
         }, function() {
+=======
+        }, function(params) {
+>>>>>>> d2084d9393f992bbc2fdb886c08b1e9aafddc20f
             window.alert("Erro ao listar.")
         });
     }
