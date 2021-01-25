@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(214, 229, 247);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+header {
+    background-color: royalblue;
+    text-align: center;
+    padding: 3rem 3rem 5rem;
+}
+
+
+.container {
+    background-color: whitesmoke;
+    width: 60%;
+    text-align: center;
+    margin: -2rem auto;
+    padding: 2.5rem 2.5rem 4rem;
+    border-radius: 0.8rem;
+
+}
+
+.container input{
+    width: 80%;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+}
+
+.container input[type=submit] {
+    padding: 0.8rem;
+    margin: 2rem 0 0 0;
+    background-color: rgba(65, 105, 225, 0.555);
+    color: navy;
+    font-weight: bold;
+}
+
+.container p{
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 1rem;
+}
+
