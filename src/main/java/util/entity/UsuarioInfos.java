@@ -1,7 +1,6 @@
 package util.entity;
 
 import model.Usuario;
-import util.core.Java2Json;
 
 public class UsuarioInfos {
 

@@ -16,6 +16,10 @@ import util.validation.LoginValidation;
 @WebServlet(urlPatterns = "/login")
 public class LoginController extends HttpServlet {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private LoginRepository lr = new LoginRepository();
 
 	@Override

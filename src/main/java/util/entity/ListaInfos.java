@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Usuario;
-import util.core.Java2Json;
 
 public class ListaInfos {
 	

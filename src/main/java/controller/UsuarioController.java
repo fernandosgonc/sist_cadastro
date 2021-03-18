@@ -1,7 +1,6 @@
 package controller;
 
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +23,10 @@ import util.exceptions.UsuarioRepositoryException;
 
 public class UsuarioController extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	UsuarioRespositoryJDBC usuRepo = new UsuarioRespositoryJDBC();
 	ListaInfos listaInfo = null;
 	UsuarioInfos usuInfo = null;
